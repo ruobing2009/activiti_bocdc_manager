@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.cas.activiti.common.JsonpCallbackFilter;
 
 @SpringBootApplication
-@ComponentScan({"org.activiti.rest.diagram", "com.cas.activiti"})
+@ComponentScan({ "com.cas.activiti"})
 @EnableAutoConfiguration(exclude = {
 		org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class,
 		org.activiti.spring.boot.SecurityAutoConfiguration.class,

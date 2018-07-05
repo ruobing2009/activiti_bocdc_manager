@@ -1,6 +1,7 @@
 package com.cas.activiti.controller;
 
 import com.cas.activiti.common.BackUtil;
+import com.cas.activiti.common.JsonpCallbackFilter;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -46,7 +47,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/models")
 public class ModelController {
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private static Logger logger = LoggerFactory.getLogger(JsonpCallbackFilter.class);
 	
     @Autowired
     private ProcessEngine processEngine;

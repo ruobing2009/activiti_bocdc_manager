@@ -42,9 +42,6 @@ public class ProcessDefinitionController {
     private RepositoryService repositoryService;
     @Autowired
     private FormService formService;
-    @Autowired
-    private IdentityService identityService;
-
 
     /**
      * 初始化启动流程，读取启动流程的表单字段来渲染start form（例如变更时间，变更原因）

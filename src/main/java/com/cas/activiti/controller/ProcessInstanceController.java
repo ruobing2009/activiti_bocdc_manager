@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.cas.activiti.common.BackUtil;
 import com.cas.activiti.common.DateUtils;
+import com.cas.activiti.service.WorkflowTraceService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -59,8 +60,8 @@ public class ProcessInstanceController {
     ProcessEngineFactoryBean processEngine;
     @Autowired
     private ProcessEngineConfiguration processEngineConfiguration;
-
-
+    @Autowired
+    protected WorkflowTraceService traceService;
     
     
     
@@ -180,6 +181,21 @@ public class ProcessInstanceController {
         while ((len = imageStream.read(b, 0, 1024)) != -1) {
             response.getOutputStream().write(b, 0, len);
         }
+    }
+    
+    /**
+     * 输出跟踪流程信息
+     *
+     * @param processInstanceId
+     * @return
+     * @throws Exception
+     */
+    @ApiOperation(value = "输出跟踪流程信息，需要自定义页面")
+    @PostMapping(value = "/trace")
+    @ResponseBody
+    public List<Map<String, Object>> traceProcess(@RequestParam("pid") String processInstanceId) throws Exception {
+        List<Map<String, Object>> activityInfos = traceService.traceProcess(processInstanceId);
+        return activityInfos;
     }
 
 
